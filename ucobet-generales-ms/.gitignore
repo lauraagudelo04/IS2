@@ -18,8 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
-/src/main/resources/bootsecurity.12
-/src/main/resources/application.properties
+
 
 ### NetBeans ###
 /nbproject/private/
@@ -33,3 +32,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+/src/main/resources/bootsecurity.12
+/src/main/resources/application.properties
+*.json

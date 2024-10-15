@@ -4,7 +4,7 @@ import co.edu.uco.ucobet.generales.domain.Domain;
 
 import java.util.UUID;
 
-public class CountryDomain extends Domain {
+public final class CountryDomain extends Domain {
     private String name;
 
     protected CountryDomain(final UUID id, final String name) {
