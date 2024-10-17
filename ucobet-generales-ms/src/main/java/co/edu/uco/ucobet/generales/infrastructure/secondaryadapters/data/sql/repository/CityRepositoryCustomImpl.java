@@ -1,7 +1,7 @@
-package co.edu.uco.ucobet.generales.infrastructure.secondaryAdapters.data.sql.repository;
+package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.data.sql.repository;
 
-import co.edu.uco.ucobet.generales.application.secondaryPorts.entity.CityEntity;
-import co.edu.uco.ucobet.generales.application.secondaryPorts.repository.CityRepositoryCustom;
+import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
+import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepositoryCustom;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RepositoryUcobetException;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;

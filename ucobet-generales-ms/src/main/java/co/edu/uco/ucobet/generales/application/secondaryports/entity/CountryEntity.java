@@ -1,4 +1,4 @@
-package co.edu.uco.ucobet.generales.application.secondaryPorts.entity;
+package co.edu.uco.ucobet.generales.application.secondaryports.entity;
 
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;

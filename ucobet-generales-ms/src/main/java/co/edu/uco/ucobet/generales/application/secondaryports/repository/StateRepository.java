@@ -1,7 +1,6 @@
-package co.edu.uco.ucobet.generales.application.secondaryPorts.repository;
+package co.edu.uco.ucobet.generales.application.secondaryports.repository;
 
-import co.edu.uco.ucobet.generales.application.secondaryPorts.entity.CityEntity;
-import co.edu.uco.ucobet.generales.application.secondaryPorts.entity.StateEntity;
+import co.edu.uco.ucobet.generales.application.secondaryports.entity.StateEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,5 +1,5 @@
 package co.edu.uco.ucobet.generales.domain.city.rules.impl;
-import co.edu.uco.ucobet.generales.application.secondaryPorts.repository.CityRepository;
+import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
 import co.edu.uco.ucobet.generales.domain.city.exceptions.CityIdDoesNotExistsException;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityIdIDoesExistsRule;
 import java.util.UUID;
