@@ -11,9 +11,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"co.edu.uco.ucobet"})
-@EnableJpaRepositories("co.edu.uco.ucobet.generales.application.secondaryports.repository")
-@EntityScan("co.edu.uco.ucobet.generales.entity")
+@EntityScan(basePackages = {"co.edu.uco.ucobet.generales.application.secondaryports.entity" })
+@ComponentScan(basePackages = {"co.edu.uco.ucobet" })
+@EnableJpaRepositories(basePackages = {"co.edu.uco.ucobet" })
 
 public class UcobetGeneralesMsApplication implements CommandLineRunner {
 

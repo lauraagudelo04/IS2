@@ -14,7 +14,9 @@ public final class RegisterNewCityStateRulesValidatorImpl implements RegisterNew
     private StateIdIsNotNullRule stateIdIsNotNullRule;
     private StateIdIsNotDefaultValueRule stateIdIsNotDefaultValueRule;
 
-    public RegisterNewCityStateRulesValidatorImpl(StateDoesExistsRule stateDoesExistsRule, StateIdIsNotNullRule stateIdIsNotNullRule, StateIdIsNotDefaultValueRule stateIdIsNotDefaultValueRule) {
+    public RegisterNewCityStateRulesValidatorImpl(final StateDoesExistsRule stateDoesExistsRule,
+                                                  final StateIdIsNotNullRule stateIdIsNotNullRule,
+                                                  final StateIdIsNotDefaultValueRule stateIdIsNotDefaultValueRule) {
         this.stateDoesExistsRule = stateDoesExistsRule;
         this.stateIdIsNotNullRule = stateIdIsNotNullRule;
         this.stateIdIsNotDefaultValueRule = stateIdIsNotDefaultValueRule;

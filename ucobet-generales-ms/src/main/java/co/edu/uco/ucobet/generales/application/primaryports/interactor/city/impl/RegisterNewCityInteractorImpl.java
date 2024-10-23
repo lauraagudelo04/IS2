@@ -15,7 +15,7 @@ public class RegisterNewCityInteractorImpl implements RegisterNewCityInteractor 
     private RegisterNewCity registerNewCity;
 
     public RegisterNewCityInteractorImpl(RegisterNewCity registerNewCity) {
-
+        super();
         this.registerNewCity = registerNewCity;
     }
 

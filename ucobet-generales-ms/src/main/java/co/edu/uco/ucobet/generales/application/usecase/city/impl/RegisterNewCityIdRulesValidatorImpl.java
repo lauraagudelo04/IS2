@@ -16,8 +16,8 @@ public class RegisterNewCityIdRulesValidatorImpl implements RegisterNewCityIdRul
 
     @Override
     public void validate(final CityDomain data) {
-        data.generateId();
         try {
+            data.generateId();
             cityIdIDoesNotExistsRule.validate(data.getId());
         }catch (final CityIdDoesNotExistsException exception){
             validate(data);
