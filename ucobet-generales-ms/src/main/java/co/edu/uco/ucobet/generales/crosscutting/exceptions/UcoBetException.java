@@ -10,11 +10,11 @@ public class UcoBetException extends  RuntimeException{
     private String userMessage;
     private Layer layer;
 
-    public UcoBetException(final String usserMessage, final String technicalMessage,
+    public UcoBetException(final String userMessage, final String technicalMessage,
                            final Exception rootException, final Layer layer) {
-        super(ObjectHelper.getDefault(technicalMessage, TextHelper.applyTrim(usserMessage)),
+        super(ObjectHelper.getDefault(technicalMessage, TextHelper.applyTrim(userMessage)),
                 ObjectHelper.getDefault(rootException, new Exception()));
-        setUserMessage(usserMessage);
+        setUserMessage(userMessage);
         setLayer(layer);
     }
 

@@ -38,11 +38,11 @@ public final class CityEntity {
         return new CityEntity();
     }
 
-    static final CityEntity create(final UUID id, final String name, final StateEntity state) {
+    public static final CityEntity create(final UUID id, final String name, final StateEntity state) {
         return new CityEntity(id, name, state);
     }
 
-    static final CityEntity create(final UUID id) {
+    public static final CityEntity create(final UUID id) {
         return new CityEntity(id, TextHelper.EMPTY, StateEntity.create());
     }
 

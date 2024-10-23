@@ -7,7 +7,7 @@ import java.util.UUID;
 public final class CountryDomain extends Domain {
     private String name;
 
-    protected CountryDomain(final UUID id, final String name) {
+    public CountryDomain(final UUID id, final String name) {
         super(id);
         setName(name);
     }

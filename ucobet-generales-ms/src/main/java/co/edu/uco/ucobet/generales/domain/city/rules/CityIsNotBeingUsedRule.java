@@ -2,5 +2,7 @@ package co.edu.uco.ucobet.generales.domain.city.rules;
 
 import co.edu.uco.ucobet.generales.domain.DomainRule;
 
-public interface CityIsNotUsedRule extends DomainRule<String> {
+import java.util.UUID;
+
+public interface CityIsNotBeingUsedRule extends DomainRule<UUID> {
 }
