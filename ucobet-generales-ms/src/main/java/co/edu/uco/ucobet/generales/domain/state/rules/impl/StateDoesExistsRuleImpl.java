@@ -18,7 +18,7 @@ public class StateDoesExistsRuleImpl implements StateDoesExistsRule {
 
     @Override
     public void validate(UUID data) {
-       if(stateRepository.existsById(data)) {
+       if(!stateRepository.existsById(data)) {
            throw StateDoesNotExistsException.create();
         }
     }

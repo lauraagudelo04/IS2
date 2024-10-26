@@ -13,9 +13,9 @@ import java.util.List;
 public interface  StateEntityMapper {
     StateEntityMapper INSTANCE = Mappers.getMapper(StateEntityMapper.class);
 
-    StateEntity toEntity(StateEntity domain);
+    StateEntity toEntity(StateDomain domain);
 
-    StateDomain toDomain(StateDomain entity);
+    StateDomain toDomain(StateEntity entity);
 
     List<StateEntity> toEntityCollection(List<StateEntity> domainCollection);
 

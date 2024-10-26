@@ -11,7 +11,7 @@ public class CityNameForStateDoesExistsException extends RuleUcoBetException {
     }
 
     public static final CityNameForStateDoesExistsException create(){
-        var userMessage = "City name for state does not exists";
+        var userMessage = "City name for state does exists";
         return new CityNameForStateDoesExistsException(userMessage);
     }
 

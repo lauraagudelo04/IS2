@@ -1,6 +1,9 @@
 package co.edu.uco.ucobet.generales.application.usecase.city.impl;
 
+import co.edu.uco.ucobet.generales.application.primaryports.mapper.CityDTOMapper;
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
+import co.edu.uco.ucobet.generales.application.secondaryports.mapper.CityEntityMapper;
+import co.edu.uco.ucobet.generales.application.secondaryports.mapper.StateEntityMapper;
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
 import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCity;
 import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCityRulesValidator;
@@ -24,7 +27,9 @@ public class RegisterNewCityImpl implements RegisterNewCity {
         registerNewCityRulesValidator.validate(domain);
 
         // Data Mapper -> Domain -> Entity
-        final var cityEntity = CityEntity.create(null);
+        final var cityEntity= CityEntity.create().setId(domain.getId())
+                .setName(domain.getName())
+                .setState(StateEntityMapper.INSTANCE.toEntity(domain.getState()));
 
         // Save CityEntity
         cityRepository.save(cityEntity);

@@ -22,7 +22,7 @@ public final class CityEntity {
     @JoinColumn(name="state")
     private StateEntity state;
 
-    CityEntity() {
+    public CityEntity() {
         setId(UUIDHelper.getDefault());
         setName(TextHelper.EMPTY);
         setState(StateEntity.create());
@@ -34,7 +34,7 @@ public final class CityEntity {
         setState(state);
     }
 
-    static final CityEntity create() {
+    public static final CityEntity create() {
         return new CityEntity();
     }
 
@@ -50,23 +50,26 @@ public final class CityEntity {
         return id;
     }
 
-    public void setId(final UUID id) {
+    public CityEntity setId(final UUID id) {
         this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(final String name) {
+    public CityEntity setName(final String name) {
         this.name = TextHelper.applyTrim(name);
+        return this;
     }
 
     public StateEntity getState() {
         return state;
     }
 
-    public void setState(final StateEntity state) {
+    public CityEntity setState(final StateEntity state) {
         this.state = ObjectHelper.getDefault(state, StateEntity.create());
+        return this;
     }
 }
