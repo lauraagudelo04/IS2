@@ -15,15 +15,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(basePackages = {"co.edu.uco.ucobet" })
 @EnableJpaRepositories(basePackages = {"co.edu.uco.ucobet" })
 
-public class UcobetGeneralesMsApplication implements CommandLineRunner {
+public class UcobetGeneralesMsApplication {
 
-	private final SecretClient secretClient;
-
-    public UcobetGeneralesMsApplication(SecretClient secretClient) {
-        this.secretClient = secretClient;
-    }
-
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		SpringApplication.run(UcobetGeneralesMsApplication.class, args);
 	}
 
@@ -34,14 +28,4 @@ public class UcobetGeneralesMsApplication implements CommandLineRunner {
 
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		String passwordUrl = secretClient.getSecret("password").getValue();
-		String usernameUrl = secretClient.getSecret("username").getValue();
-		System.setProperty("password", passwordUrl);
-		System.setProperty("username", passwordUrl);
-		System.out.println("password: " + passwordUrl);
-		System.out.println("username: " + usernameUrl);
-	}
 }
-

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class CityNameFormatIsValidRuleImpl implements CityNameFormatIsValidRule {
     @Override
     public void validate(String data) {
-        if (TextHelper.isEmpty(data)) {
+        if (TextHelper.isEmpty(data) || !TextHelper.containsOnlyLetters(data)) {
             throw CityNameFormatIsNotValidException.create();
         }
     }

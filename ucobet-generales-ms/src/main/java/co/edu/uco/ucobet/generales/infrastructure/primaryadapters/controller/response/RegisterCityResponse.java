@@ -2,5 +2,5 @@ package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.re
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityDTO;
 
-public class CityResponse extends Response<RegisterNewCityDTO>{
+public class RegisterCityResponse extends Response<RegisterNewCityDTO>{
 }

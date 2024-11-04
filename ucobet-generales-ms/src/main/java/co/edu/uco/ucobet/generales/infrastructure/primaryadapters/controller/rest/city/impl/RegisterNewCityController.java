@@ -1,20 +1,20 @@
 package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.rest.city.impl;
 
-import co.edu.uco.ucobet.generales.application.primaryports.dto.CityDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcoBetException;
-import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.CityResponse;
+
+import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.RegisterCityResponse;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageHelper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/general/api/v1/cities")
+
 public class RegisterNewCityController {
+
     private RegisterNewCityInteractor  registerNewCityInteractor;
 
     public RegisterNewCityController(RegisterNewCityInteractor registerNewCityInteractor) {
@@ -22,15 +22,15 @@ public class RegisterNewCityController {
         this.registerNewCityInteractor = registerNewCityInteractor;
     }
 
-    @PostMapping("/crearperfil")
-    public ResponseEntity<CityResponse> registrar(@RequestBody RegisterNewCityDTO registerNewCityDTO) {
+    @PostMapping("/registerNewCity")
+    public ResponseEntity<RegisterCityResponse> registrar(@RequestBody RegisterNewCityDTO registerNewCityDTO) {
 
         var httpStatusCode = HttpStatus.ACCEPTED;
-        var cityResponse = new CityResponse();
+        var cityResponse = new RegisterCityResponse();
 
         try {
             registerNewCityInteractor.execute(registerNewCityDTO);
-            var mensajeUsuario = "La ciudad se encuentra registrado correctamente";
+            var mensajeUsuario = MessageHelper.getMessage("M001");
             cityResponse.getMensajes().add(mensajeUsuario);
 
         } catch (final UcoBetException excepcion) {
@@ -40,7 +40,7 @@ public class RegisterNewCityController {
 
         } catch (final Exception excepcion) {
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            var mensajeUsuario = "La ciudad no se pudo registrar";
+            var mensajeUsuario = MessageHelper.getMessage("M002");
             cityResponse.getMensajes().add(mensajeUsuario);
             excepcion.printStackTrace();
         }

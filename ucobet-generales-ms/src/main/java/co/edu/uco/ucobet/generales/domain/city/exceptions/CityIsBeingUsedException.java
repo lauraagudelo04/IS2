@@ -1,17 +1,19 @@
 package co.edu.uco.ucobet.generales.domain.city.exceptions;
 
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RuleUcoBetException;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageHelper;
 
 public class CityIsBeingUsedException extends RuleUcoBetException {
 
     private static final long serialVersionUID = 1L;
 
-    public CityIsBeingUsedException(final String userMessage ) {
-        super(userMessage, userMessage, new Exception());
+    private CityIsBeingUsedException(final String userMessage, final String technicalMessage) {
+        super(userMessage, technicalMessage, new Exception());
     }
 
     public static final CityIsBeingUsedException create(){
-        var userMessage = "City is already being used";
-        return new CityIsBeingUsedException(userMessage);
+        var userMessage = MessageHelper.getMessage("M0011");
+        var technicalMessage = MessageHelper.getMessage("T007");
+        return new CityIsBeingUsedException(userMessage, technicalMessage);
     }
 }

@@ -10,8 +10,12 @@ import java.util.List;
 @Mapper
 public interface CountryEntityMapper {
     CountryEntityMapper INSTANCE= Mappers.getMapper(CountryEntityMapper.class);
+
     CountryEntity toEntity (CountryDomain domain);
+
     CountryDomain toDomain (CountryEntity entity);
+
     List<CountryEntity> toEntityList (List<CountryDomain> domains);
+
     List<CountryDomain> toDomainList (List<CountryEntity> entities);
 }

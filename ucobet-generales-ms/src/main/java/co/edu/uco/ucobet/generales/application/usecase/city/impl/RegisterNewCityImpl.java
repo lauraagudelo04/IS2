@@ -1,10 +1,8 @@
 package co.edu.uco.ucobet.generales.application.usecase.city.impl;
 
-import co.edu.uco.ucobet.generales.application.primaryports.mapper.CityDTOMapper;
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
-import co.edu.uco.ucobet.generales.application.secondaryports.mapper.CityEntityMapper;
 import co.edu.uco.ucobet.generales.application.secondaryports.mapper.StateEntityMapper;
-import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
+import co.edu.uco.ucobet.generales.application.secondaryports.repository.city.CityRepository;
 import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCity;
 import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCityRulesValidator;
 import co.edu.uco.ucobet.generales.domain.city.CityDomain;

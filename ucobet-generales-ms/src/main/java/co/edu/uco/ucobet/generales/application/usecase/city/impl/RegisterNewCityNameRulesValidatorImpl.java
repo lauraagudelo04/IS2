@@ -23,10 +23,10 @@ public final class RegisterNewCityNameRulesValidatorImpl implements RegisterNewC
 
     @Override
     public void validate(final CityDomain data) {
-        cityNameLengthIsValidRule.validate(data.getName());
-        cityNameFormatIsValidRule.validate(data.getName());
-        cityNameIsNotEmptyRule.validate(data.getName());
         cityNameIsNotNullRule.validate(data.getName());
+        cityNameIsNotEmptyRule.validate(data.getName());
+        cityNameFormatIsValidRule.validate(data.getName());
+        cityNameLengthIsValidRule.validate(data.getName());
         cityNameForStateDoesNotExistsRule.validate(data);
     }
 }

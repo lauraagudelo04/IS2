@@ -1,4 +1,4 @@
-package co.edu.uco.ucobet.generales.application.secondaryports.repository;
+package co.edu.uco.ucobet.generales.application.secondaryports.repository.city;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package co.edu.uco.ucobet.generales.application.secondaryports.repository;
+package co.edu.uco.ucobet.generales.application.secondaryports.repository.country;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CountryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,10 +1,12 @@
-package co.edu.uco.ucobet.generales.application.secondaryports.repository;
+package co.edu.uco.ucobet.generales.application.secondaryports.repository.city.impl;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
+import co.edu.uco.ucobet.generales.application.secondaryports.repository.city.CityRepositoryCustom;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RepositoryUcobetException;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageHelper;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.Predicate;
 import java.util.ArrayList;
@@ -26,27 +28,25 @@ public class CityRepositoryCustomImpl implements CityRepositoryCustom {
             var query = criteriaBuilder.createQuery(CityEntity.class);
             var result = query.from(CityEntity.class);
 
-            var predicates = new ArrayList<>();
+            var predicates = new ArrayList<Predicate>();
 
             if (!ObjectHelper.isNull(filter)) {
                 if (!UUIDHelper.isDefault(filter.getId())) {
                     predicates.add(criteriaBuilder.equal(result.get("id"), filter.getId()));
                 }
-
                 if (!TextHelper.isEmpty(filter.getName())) {
-                    predicates.add(criteriaBuilder.equal(result.get("name"), filter.getName()));
+                    predicates.add(criteriaBuilder.equal(criteriaBuilder.upper(result.get("name")), filter.getName().toUpperCase()));
                 }
-
                 if (!UUIDHelper.isDefault(filter.getState().getId())) {
-                    predicates.add(criteriaBuilder.equal(result.get("state"), filter.getState()));
+                    predicates.add(criteriaBuilder.equal(result.get("state").get("id"), filter.getState().getId()));
                 }
             }
 
             query.select(result).where(criteriaBuilder.and(predicates.toArray(new Predicate[0])));
             return entityManager.createQuery(query).getResultList();
 
-        } catch (final Exception exception) {
-            throw RepositoryUcobetException.create(null, null, exception);
+        }catch (final Exception exception){
+            throw RepositoryUcobetException.create(MessageHelper.getMessage("M0020"), MessageHelper.getMessage("T001"), exception);
         }
     }
 
@@ -64,7 +64,7 @@ public class CityRepositoryCustomImpl implements CityRepositoryCustom {
             return count > 0;
 
         } catch (final Exception exception) {
-            throw RepositoryUcobetException.create("Error al verificar si la ciudad está siendo utilizada", null,
+            throw RepositoryUcobetException.create(MessageHelper.getMessage("M0021"), MessageHelper.getMessage("T002"),
                     exception);
         }
     }

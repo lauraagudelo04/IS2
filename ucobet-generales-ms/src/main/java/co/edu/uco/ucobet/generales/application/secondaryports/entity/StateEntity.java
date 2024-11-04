@@ -22,7 +22,7 @@ public final class StateEntity {
     @JoinColumn(name="country")
     private CountryEntity country;
 
-    StateEntity() {
+    public StateEntity() {
         setId(UUIDHelper.getDefault());
         setName(TextHelper.EMPTY);
         setCountry(CountryEntity.create());
