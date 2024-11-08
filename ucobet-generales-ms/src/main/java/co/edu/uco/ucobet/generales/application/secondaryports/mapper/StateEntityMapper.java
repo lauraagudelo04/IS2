@@ -1,8 +1,6 @@
 package co.edu.uco.ucobet.generales.application.secondaryports.mapper;
 
-import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.StateEntity;
-import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 import co.edu.uco.ucobet.generales.domain.state.StateDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -3,7 +3,7 @@ package co.edu.uco.ucobet.generales.crosscutting.helpers;
 public class TextHelper {
 
 	public static final String EMPTY = "";
-	private static final String LETTERS_ONLY_REGEX = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+( [a-zA-ZáéíóúÁÉÍÓÚñÑ]+)*$";
+	private static final String LETTERS_ONLY_REGEX = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$";
 
 	private TextHelper() {
 

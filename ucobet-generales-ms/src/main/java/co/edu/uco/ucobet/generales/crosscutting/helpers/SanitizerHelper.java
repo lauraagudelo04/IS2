@@ -3,6 +3,9 @@ package co.edu.uco.ucobet.generales.crosscutting.helpers;
 import org.apache.commons.text.StringEscapeUtils;
 
 public class SanitizerHelper {
+    private SanitizerHelper() {
+    }
+
     //Texto limpio
     public static String sanitizeInput(String input) {
         if (input == null) return null;
@@ -18,9 +21,8 @@ public class SanitizerHelper {
         if (input == null) return null;
         return StringEscapeUtils.escapeEcmaScript(input);
     }
-    //SQL caracteres
-    public static String escapeForSQL(String input) {
-        if (input == null) return null;
-        return input.replaceAll("(['\";])+?", "\\\\$1");
+
+    public static SanitizerHelper createSanitizerHelper() {
+        return new SanitizerHelper();
     }
 }

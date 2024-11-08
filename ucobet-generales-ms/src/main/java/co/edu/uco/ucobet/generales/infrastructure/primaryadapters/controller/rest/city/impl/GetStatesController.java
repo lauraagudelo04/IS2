@@ -2,7 +2,6 @@ package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.re
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.StateDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.states.GetStatesInteractor;
-import co.edu.uco.ucobet.generales.application.secondaryports.service.telemetry.TelemetryService;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcoBetException;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.GetStatesResponse;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
@@ -21,11 +20,9 @@ import java.util.Map;
 public class GetStatesController {
 
     private final GetStatesInteractor getStatesInteractor;
-    private final TelemetryService telemetryService;
 
-    public GetStatesController(GetStatesInteractor getStatesInteractor, TelemetryService telemetryService) {
+    public GetStatesController(GetStatesInteractor getStatesInteractor) {
         this.getStatesInteractor = getStatesInteractor;
-        this.telemetryService = telemetryService;
     }
 
     @GetMapping
@@ -41,7 +38,6 @@ public class GetStatesController {
             stateResponse.getMensajes().add(MessageHelper.getMessage("M004"));
             Map<String, String> successProps = new HashMap<>();
             successProps.put(MessageHelper.getMessage("M0030"), String.valueOf(states.size()));
-            telemetryService.trackEvent(MessageHelper.getMessage("M0031"), successProps);
 
         } catch (final UcoBetException excepcion) {
             httpStatusCode = HttpStatus.BAD_REQUEST;

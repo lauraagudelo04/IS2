@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -22,9 +21,8 @@ public class GetCitiesInteractorImpl implements GetCitiesInteractor {
 
     @Override
     public List<GetCitiesDTO> execute(Void data) {
-
         return getCities.execute(null).stream()
                 .map(CityDTOMapper.INSTANCE::toListCityDTO)
-                .collect(Collectors.toList());
+                .toList(); // Reemplazado para usar una lista inmodificable
     }
-    }
+}
