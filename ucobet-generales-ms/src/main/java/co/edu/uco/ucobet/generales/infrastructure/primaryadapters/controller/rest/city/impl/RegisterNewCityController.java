@@ -4,8 +4,9 @@ import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityD
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcoBetException;
 
+import co.edu.uco.ucobet.generales.crosscutting.helpers.SanitizerHelper;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.RegisterCityResponse;
-import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class RegisterNewCityController {
         var cityResponse = new RegisterCityResponse();
 
         try {
+            sanitizeRegisterNewCityDTO(registerNewCityDTO);
             registerNewCityInteractor.execute(registerNewCityDTO);
             var mensajeUsuario = MessageHelper.getMessage("M001");
             cityResponse.getMensajes().add(mensajeUsuario);
@@ -36,16 +38,21 @@ public class RegisterNewCityController {
         } catch (final UcoBetException excepcion) {
             httpStatusCode = HttpStatus.BAD_REQUEST;
             cityResponse.getMensajes().add(excepcion.getUserMessage());
-            excepcion.printStackTrace();
 
         } catch (final Exception excepcion) {
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
             var mensajeUsuario = MessageHelper.getMessage("M002");
             cityResponse.getMensajes().add(mensajeUsuario);
-            excepcion.printStackTrace();
+
         }
 
         return new ResponseEntity<>(cityResponse, httpStatusCode);
 
+    }
+
+    private void sanitizeRegisterNewCityDTO(RegisterNewCityDTO dto) {
+        if (dto != null) {
+            dto.setCityName(SanitizerHelper.sanitizeInput(dto.getCity()));
+        }
     }
 }

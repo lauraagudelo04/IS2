@@ -22,7 +22,7 @@ public final class RegisterNewCityDTO {
         return cityName;
     }
 
-    private void setCityName( final String cityName) {
+    public void setCityName( final String cityName) {
         this.cityName = TextHelper.applyTrim(cityName);
     }
 

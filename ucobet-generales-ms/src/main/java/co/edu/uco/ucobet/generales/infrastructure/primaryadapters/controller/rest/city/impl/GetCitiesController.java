@@ -4,10 +4,9 @@ import co.edu.uco.ucobet.generales.application.primaryports.dto.GetCitiesDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.GetCitiesInteractor;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcoBetException;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.GetCitiesResponse;
-import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,12 +37,12 @@ public class GetCitiesController {
         } catch (final UcoBetException excepcion) {
             httpStatusCode = HttpStatus.BAD_REQUEST;
             cityResponse.getMensajes().add(excepcion.getUserMessage());
-            excepcion.printStackTrace();
+
 
         } catch (final Exception excepcion) {
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
             cityResponse.getMensajes().add(MessageHelper.getMessage("M007"));
-            excepcion.printStackTrace();
+
         }
 
         return new ResponseEntity<>(cityResponse, httpStatusCode);

@@ -29,10 +29,6 @@ public class TextHelper {
 		return EMPTY.equals(getDefault(string));
 	}
 
-	public static boolean isEmptyApplyingTrim(final String string) {
-		return isEmpty(applyTrim(string));
-	}
-
 	public static String applyTrim(final String string) {
 		return getDefault(string).trim();
 	}
